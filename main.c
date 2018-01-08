@@ -1,40 +1,30 @@
 #include <stdio.h>
-#define STR_LEN 30
+#include <string.h>
 
-typedef struct {
-    char name[STR_LEN+1];
-    char surname[STR_LEN+1];
-    int age;
-} User;
+struct dati_patente
+{
+    int patente_id;
+    char nome_patente[50];
+};
 
-void print_data(User u);
+struct dati_personali
+{
+    int id;
+    char name[20];
+    float punteggio;
+    //structure within structure
+    struct dati_patente da_pat;
+} dati_utente;
 
 int main(){
     
-    User user1;
+    struct dati_personali dati_utente = {29, "Gino", 79, 345678998, "Car-Destroy"};
     
-    printf("Inserire dati utente 1: ");
-    printf("\n\n");
-    printf("Name: \n");
-    scanf("%s", user1.name);
-    printf("Surname: \n");
-    scanf("%s", user1.surname);
-    printf("Age: \n");
-    scanf("%d", &user1.age);
-    
-    printf("\n\n");
-    
-    print_data(user1);
-    
-    printf("\n\n");
+    printf("Id is: %d\n", dati_utente.id);
+    printf("Name is: %s\n", dati_utente.name);
+    printf("Points are: %f\n", dati_utente.punteggio);
+    printf("Patente ID: %d\n", dati_utente.da_pat.patente_id);
+    printf("Nome Patente: %s\n", dati_utente.da_pat.nome_patente);
     
     return 0;
-}
-
-void print_data(User u){
-    
-    printf("Name: %s\n", u.name);
-    printf("Name: %s\n", u.surname);
-    printf("Name: %d\n", u.age);
-    
 }
